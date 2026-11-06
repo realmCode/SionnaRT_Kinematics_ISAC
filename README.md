@@ -1,24 +1,101 @@
-# SionnaRT_Kinematics_ISAC
+<div align="center">
 
-## Investigation of Sionna RT for Ray-Traced ISAC-Based Sensing
+# SionnaRT Kinematics & ISAC
 
-This project investigates how Sionna RT can model radio propagation in a 3D scene and produce interpretable channel data for a moving receiver. A fixed transmitter operates at 3.5 GHz while the receiver follows a waypoint route. At each sampled position, the notebook traces propagation paths and exports their geometry, complex coefficients, delays, Doppler shifts, angles, and interaction types.
+### Investigation of Sionna RT for Ray-Traced ISAC-Based Sensing
 
-The implemented work covers **ray tracing and channel analysis**. The results can support future integrated sensing and communication (ISAC) experiments, but the current project does not implement a sensing waveform, target detection, range–Doppler processing, or sensing accuracy evaluation.
+**A 3D ray-tracing study of a mobile receiver, multipath propagation, and channel behavior.**
+
+`3.5 GHz` &nbsp; ? &nbsp; `61 snapshots` &nbsp; ? &nbsp; `4,826 path records` &nbsp; ? &nbsp; `Sionna RT 2.1`
+
+[Explore the notebook](mobility_channel_study.ipynb) ? [Read the report](IEEE_SionnaRT_ISAC_Report.pdf) ? [View the slides](SionnaRT_ISAC_Presentation.pdf) ? [Study documentation](MOBILITY_CHANNEL_STUDY_DOCUMENTATION.md)
+
+</div>
+
+---
+
+## The project at a glance
+
+A fixed transmitter illuminates a 3D environment while a receiver follows a road-aware route. At every sampled position, Sionna RT retraces the propagation paths and records their geometry and channel properties. The resulting data shows how blockage, reflections, diffraction, and path phase affect the moving receiver's channel.
+
+<div align="center">
+  <img src="presentation_assets/receiver_motion_preview.gif" alt="Animation of a mobile receiver and ray-traced paths in the 3D scene" width="760">
+  <br>
+  <em>Receiver motion and retraced paths over selected snapshots; the radio map is a static, semi-transparent overlay.</em>
+</div>
+
+> **Scope:** This project implements ray tracing and channel analysis. The outputs can support future integrated sensing and communication (ISAC) studies; a sensing waveform, target detector, range?Doppler processor, and sensing accuracy evaluation are not yet implemented.
+
+## What the simulation does
+
+```text
+3D scene + radio materials
+          ?
+Transmitter, receiver, arrays and route
+          ?
+Static radio map + per-snapshot ray tracing
+          ?
+Path coefficients, delay, Doppler, angles and geometry
+          ?
+Channel metrics, datasets, figures and animation
+```
+
+- Models line-of-sight (LoS), specular reflection, refraction, diffraction, and mixed paths in a static scene.
+- Moves the receiver through a waypoint trajectory and independently retraces its paths at each snapshot.
+- Computes coherent and incoherent received power, path counts, delay spread, Doppler spread, and thermal-noise-only SNR.
+- Exports results for analysis and documents the experiment in an IEEE-style report and Beamer presentation.
+
+## Results from the saved run
+
+The report and presentation use the balanced run [`mobility_20261104_235027`](outputs/mobility_20261104_235027/).
+
+| Experiment | Result |
+| --- | --- |
+| Carrier frequency / bandwidth | 3.5 GHz / 20 MHz |
+| Receiver route / nominal speed | 1,183.45 m / 10 m/s |
+| Snapshots / valid path records | 61 / 4,826 |
+| Coherent received power | ?70.92 to ?13.87 dBm |
+| LoS / NLoS snapshots | 39 / 22 |
+| Snapshots with no valid paths | 0 |
+
+### Route and coverage
+
+<div align="center">
+  <img src="outputs/mobility_20261104_235027/figures/coverage_and_trajectory.png" alt="Radio-map path gain overlaid with receiver trajectory and transmitter location" width="700">
+  <br>
+  <em>The static radio map is evaluated at 1.5 m; the receiver follows the route at 2 m.</em>
+</div>
+
+### Channel behavior along the route
+
+<div align="center">
+  <img src="outputs/mobility_20261104_235027/figures/channel_metrics.png" alt="Coherent and incoherent received power, path loss, delay spread, Doppler spread, and path count along the route" width="760">
+  <br>
+  <em>Coherent and incoherent power differ because the coherent sum includes interference between path phases.</em>
+</div>
+
+### Strongest and weakest snapshots
+
+<div align="center">
+  <img src="outputs/mobility_20261104_235027/figures/strong_weak_path_delays.png" alt="Individual path power versus delay at the strongest and weakest received-power snapshots" width="700">
+  <br>
+  <em>Each point represents a traced path, with color indicating its interaction category.</em>
+</div>
+
+These values describe one simulation, not field measurements or a practical service-outage test. NLoS means the direct path is absent; it does not mean that all paths or a real communication link have failed.
 
 ## Project contents
 
 | Path | Description |
 | --- | --- |
-| `mobility_channel_study.ipynb` | Main simulation, analysis, exports, plots, and optional animation |
-| `test_scene/test_scene.xml` and `test_scene/meshes/` | Scene definition and 3D geometry |
-| `outputs/mobility_20261104_235027/` | Saved run used in the report and presentation |
-| `MOBILITY_CHANNEL_STUDY_DOCUMENTATION.md` | Detailed notebook workflow, data dictionaries, and limitations; its worked results refer to the older `mobility_20260918_004212` run |
-| `IEEE_SionnaRT_ISAC_Report.tex` and `.pdf` | IEEE-style project report and compiled PDF |
-| `SionnaRT_ISAC_Presentation.tex` and `.pdf` | Beamer presentation and compiled PDF |
-| `SionnaRT_Presentation_Speaking_Notes.md` | Slide-by-slide speaking notes |
-| `*_Overleaf.zip` | Self-contained report and presentation source packages |
-| `test.ipynb`, `test_code.py` | Earlier single-link scene exploration |
+| [`mobility_channel_study.ipynb`](mobility_channel_study.ipynb) | Main simulation, analysis, exports, plots, and optional animation |
+| [`test_scene/`](test_scene/) | Scene definition and 3D geometry |
+| [`outputs/mobility_20261104_235027/`](outputs/mobility_20261104_235027/) | Saved run used in the report and presentation |
+| [`MOBILITY_CHANNEL_STUDY_DOCUMENTATION.md`](MOBILITY_CHANNEL_STUDY_DOCUMENTATION.md) | Detailed workflow and data dictionaries; its worked results refer to an older run |
+| [`IEEE_SionnaRT_ISAC_Report.pdf`](IEEE_SionnaRT_ISAC_Report.pdf) | IEEE-style report; LaTeX source is included alongside it |
+| [`SionnaRT_ISAC_Presentation.pdf`](SionnaRT_ISAC_Presentation.pdf) | Beamer presentation; LaTeX source and speaking notes are included |
+| [`IEEE_SionnaRT_ISAC_Report_Overleaf.zip`](IEEE_SionnaRT_ISAC_Report_Overleaf.zip), [`SionnaRT_Beamer_Overleaf.zip`](SionnaRT_Beamer_Overleaf.zip) | Self-contained LaTeX packages with figures |
+| [`test.ipynb`](test.ipynb), [`test_code.py`](test_code.py) | Earlier single-link scene exploration |
 
 ## Setup
 
@@ -58,9 +135,7 @@ The notebook offers three profiles:
 
 A higher profile increases computation and does not by itself establish physical accuracy or solver convergence.
 
-## Saved results
-
-The report and slides use the **balanced** run `outputs/mobility_20261104_235027`. Its receiver follows a 1,183.45 m route over 118.35 s at a nominal 10 m/s. It contains 61 snapshots and 4,826 valid path records. Coherent received power ranges from −70.92 to −13.87 dBm. The direct line-of-sight path appears in 39 snapshots and is absent in 22; every snapshot has at least one valid traced path. These figures describe this specific simulated configuration, not field measurements or a practical service-outage test.
+## Output files
 
 Each run may contain:
 
@@ -70,7 +145,7 @@ Each run may contain:
 - `run_config.json`, `RUN_SUMMARY.md`, and `DATA_DICTIONARY.md`: configuration, overview, and field definitions.
 - `figures/`, `scene_frames/`, and a GIF: visualizations when the relevant notebook cells are enabled.
 
-The `.gitignore` keeps the saved run used by the documents available for version control, while excluding its generated GIF and most animation frames, other run directories, and local build/cache files. Ignored files remain on disk; the notebook can regenerate them. The two frames used by the presentation are retained.
+The `.gitignore` keeps the saved run used by the documents available for version control, while excluding its full-size generated GIF and most animation frames, other run directories, and local build/cache files. A smaller GIF preview is included for this README. Ignored files remain on disk; the notebook can regenerate them. The two frames used by the presentation are retained.
 
 ## Build the report and presentation
 
