@@ -1,0 +1,43 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# Local editors and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# LaTeX intermediates and local portable compiler
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+.tectonic-cache/
+.tex_compiler/
+tectonic_portable.zip
+tectonic_release.json
+
+# Temporary visual QA images
+scene_review.png
+presentation_assets/contact_sheet.png
+presentation_assets/title_check.png
+
+# Generated simulation runs; retain the run used by the report and slides
+/outputs/*
+!/outputs/mobility_20261104_235027/
+/outputs/mobility_20261104_235027/receiver_motion_transparent_radio_map.gif
+/outputs/mobility_20261104_235027/scene_frames/*
+!/outputs/mobility_20261104_235027/scene_frames/frame_0000.png
+!/outputs/mobility_20261104_235027/scene_frames/frame_0020.png

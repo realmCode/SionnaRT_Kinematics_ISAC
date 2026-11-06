@@ -1,0 +1,269 @@
+{
+  "run_name": "mobility_20261104_235027",
+  "created_local": "2026-11-04T23:51:04.456915",
+  "run_profile": "balanced",
+  "profile": {
+    "num_steps": 61,
+    "max_depth": 3,
+    "path_samples": 100000,
+    "rm_samples": 250000,
+    "rm_cell_m": 4.0
+  },
+  "scene_path": "test_scene\\test_scene.xml",
+  "carrier_frequency_hz": 3500000000.0,
+  "bandwidth_hz": 20000000.0,
+  "tx_power_dbm": 44.0,
+  "tx_position_m": [
+    -107.0,
+    43.0,
+    10.0
+  ],
+  "rx_start_m": [
+    160.0,
+    -74.0,
+    2.0
+  ],
+  "rx_end_m": [
+    160.0,
+    -74.0,
+    2.0
+  ],
+  "rx_waypoints_m": [
+    [
+      160.0,
+      -74.0,
+      2.0
+    ],
+    [
+      120.0,
+      -56.0,
+      2.0
+    ],
+    [
+      80.0,
+      -39.0,
+      2.0
+    ],
+    [
+      40.0,
+      -22.0,
+      2.0
+    ],
+    [
+      0.0,
+      -4.0,
+      2.0
+    ],
+    [
+      -40.0,
+      13.0,
+      2.0
+    ],
+    [
+      -70.0,
+      28.0,
+      2.0
+    ],
+    [
+      -82.0,
+      55.0,
+      2.0
+    ],
+    [
+      -120.0,
+      68.0,
+      2.0
+    ],
+    [
+      -82.0,
+      55.0,
+      2.0
+    ],
+    [
+      -70.0,
+      28.0,
+      2.0
+    ],
+    [
+      -40.0,
+      13.0,
+      2.0
+    ],
+    [
+      -25.0,
+      5.0,
+      2.0
+    ],
+    [
+      -25.0,
+      -40.0,
+      2.0
+    ],
+    [
+      -95.0,
+      -40.0,
+      2.0
+    ],
+    [
+      -130.0,
+      -35.0,
+      2.0
+    ],
+    [
+      -155.0,
+      -20.0,
+      2.0
+    ],
+    [
+      -160.0,
+      20.0,
+      2.0
+    ],
+    [
+      -155.0,
+      -20.0,
+      2.0
+    ],
+    [
+      -130.0,
+      -35.0,
+      2.0
+    ],
+    [
+      -95.0,
+      -40.0,
+      2.0
+    ],
+    [
+      -25.0,
+      -40.0,
+      2.0
+    ],
+    [
+      -25.0,
+      5.0,
+      2.0
+    ],
+    [
+      -40.0,
+      13.0,
+      2.0
+    ],
+    [
+      -70.0,
+      28.0,
+      2.0
+    ],
+    [
+      -40.0,
+      13.0,
+      2.0
+    ],
+    [
+      0.0,
+      -4.0,
+      2.0
+    ],
+    [
+      40.0,
+      -22.0,
+      2.0
+    ],
+    [
+      80.0,
+      -39.0,
+      2.0
+    ],
+    [
+      120.0,
+      -56.0,
+      2.0
+    ],
+    [
+      160.0,
+      -74.0,
+      2.0
+    ]
+  ],
+  "trajectory_description": "Road-aware out-and-back route with northern and southern/western branches around the transmitter",
+  "rx_speed_mps": 10.0,
+  "synthetic_array": true,
+  "mechanisms": {
+    "los": true,
+    "specular": true,
+    "refraction": true,
+    "diffraction": true,
+    "edge_diffraction": true,
+    "diffuse": true,
+    "diffraction_lit_region": true
+  },
+  "radio_map": {
+    "computed": true,
+    "center_m": [
+      0.0,
+      0.0,
+      1.5
+    ],
+    "size_m": [
+      400.0,
+      400.0
+    ],
+    "cell_size_m": 4.0,
+    "samples_per_tx": 250000
+  },
+  "animation": {
+    "created": true,
+    "radio_map_alpha": 0.45,
+    "frame_stride": 2,
+    "frame_duration_ms": 1000,
+    "camera_position_m": [
+      360.0,
+      -280.0,
+      180.0
+    ],
+    "camera_look_at_m": [
+      -10.0,
+      0.0,
+      5.0
+    ]
+  },
+  "array_combining_assumption": "Equal-power, equal-phase TX weights (1/sqrt(num_tx_ant)); one RX antenna.",
+  "power_interpretation": "Narrowband coherent power at baseband reference frequency; per-path power uses |a_i|^2.",
+  "material_audit": [
+    {
+      "object_name": "elm__4",
+      "object_id": 1,
+      "material_name": "itu_marble",
+      "relative_permittivity": 7.073999881744385,
+      "conductivity_s_per_m": 0.01755005680024624,
+      "thickness_m": 0.10000000149011612,
+      "scattering_coefficient": 0.0,
+      "xpd_coefficient": 0.0
+    },
+    {
+      "object_name": "elm__5",
+      "object_id": 2,
+      "material_name": "itu_metal",
+      "relative_permittivity": 1.0,
+      "conductivity_s_per_m": 10000000.0,
+      "thickness_m": 0.10000000149011612,
+      "scattering_coefficient": 0.0,
+      "xpd_coefficient": 0.0
+    },
+    {
+      "object_name": "elm__7",
+      "object_id": 3,
+      "material_name": "itu_concrete",
+      "relative_permittivity": 5.239999771118164,
+      "conductivity_s_per_m": 0.12308694422245026,
+      "thickness_m": 0.10000000149011612,
+      "scattering_coefficient": 0.0,
+      "xpd_coefficient": 0.0
+    }
+  ],
+  "versions": {
+    "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+    "sionna": "2.1.0",
+    "numpy": "2.4.6"
+  }
+}
